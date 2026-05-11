@@ -1,0 +1,20 @@
+{% extends 'todos/base.html'%}\
+
+{% block title %}ToDos{% endblock %}
+
+{% block content %}
+
+<ul>
+    {% for todo in todos %}
+    <li>
+        <b>{{todo.id}} - {{todo.title}}:</b> (Done: {{todo.done}})
+    </li>
+    {% endfor %}
+</ul>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}
